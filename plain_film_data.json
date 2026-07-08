@@ -505,6 +505,89 @@
           "source": "Radiopaedia Hallux valgus intermetatarsal angle case"
         }
       ]
+    },
+    {
+      "id": "wrist",
+      "name_zh": "腕關節 Wrist",
+      "views": "PA(正位)、Lateral(側位) 為主,部分需 Oblique view",
+      "measurements": [
+        {
+          "id": "radial_inclination",
+          "name_zh": "橈骨傾斜角 (Radial Inclination)",
+          "calcType": "angle_perp",
+          "points": ["橈骨幹軸線點1", "橈骨幹軸線點2", "橈骨莖突尖", "橈骨遠端關節面尺側緣"],
+          "howto": "PA片點選橈骨幹縱軸兩點,再點選橈骨莖突尖至遠端關節面尺側緣兩點,系統計算此線與橈骨幹垂線之夾角",
+          "normal": "13-30°(平均約 22-23°)",
+          "abnormal": "明顯減少提示橈骨遠端骨折後對位不良或畸形癒合",
+          "significance": "評估橈骨遠端骨折復位品質,為Colles/Smith氏骨折預後重要指標",
+          "source": "Radiopaedia X-ray Interpretation Wrist Injuries; EPOS Angles arcs and axes"
+        },
+        {
+          "id": "volar_tilt",
+          "name_zh": "掌側傾角 (Volar Tilt / Palmar Tilt)",
+          "calcType": "angle_perp",
+          "points": ["橈骨幹軸線點1(側位)", "橈骨幹軸線點2", "橈骨遠端關節面背側點", "橈骨遠端關節面掌側點"],
+          "howto": "側位片點選橈骨幹縱軸兩點,再點選遠端關節面背側至掌側兩點,系統計算此線與橈骨幹垂線之夾角",
+          "normal": "0-22°(平均約 11-12°,掌側傾)",
+          "abnormal": "背傾(負值)或角度過大,提示橈骨遠端骨折復位不良",
+          "significance": "側位評估橈骨遠端骨折掌背側成角",
+          "source": "Radiopaedia Wrist Injuries; PMC Distal Radius Indices"
+        },
+        {
+          "id": "ulnar_variance",
+          "name_zh": "尺骨變異 (Ulnar Variance)",
+          "calcType": "signed_distance_mm",
+          "points": ["橈骨尺側緣關節面點", "尺骨遠端關節面點"],
+          "howto": "中立位PA片點選橈骨尺側緣關節面,再點選尺骨遠端關節面對應點,系統以垂直方向有號距離計算(正值=尺骨較長)",
+          "normal": "0 ± 2 mm",
+          "abnormal": "正變異 > 2mm 增加尺腕關節撞擊症候群風險;負變異可能與Kienböck氏病相關",
+          "significance": "評估尺橈骨長度關係,與尺腕撞擊症候群、Kienböck氏病相關",
+          "source": "Radiopaedia Wrist Injuries; PMC Distal Radius Indices"
+        },
+        {
+          "id": "radial_height",
+          "name_zh": "橈骨高度 (Radial Height)",
+          "calcType": "distance_mm",
+          "points": ["橈骨莖突尖點", "尺骨頭關節面對應點"],
+          "howto": "PA片測量橈骨莖突尖至尺骨頭關節面水平參考線之垂直距離",
+          "normal": "8-18 mm(平均約 11-12 mm)",
+          "abnormal": "< 8 mm 提示橈骨短縮(骨折復位不良)",
+          "significance": "評估橈骨長度,為骨折復位品質指標之一",
+          "source": "Radiopaedia Wrist Injuries; EPOS Angles arcs and axes"
+        },
+        {
+          "id": "scapholunate_angle",
+          "name_zh": "舟月骨角 (Scapholunate Angle, SL Angle)",
+          "calcType": "angle",
+          "points": ["舟狀骨長軸點1", "舟狀骨長軸點2", "月狀骨長軸點1", "月狀骨長軸點2"],
+          "howto": "側位片點選舟狀骨長軸兩點,再點選月狀骨長軸(mechanical axis)兩點,計算夾角",
+          "normal": "30-60°",
+          "abnormal": "< 30° 提示VISI(volar intercalated segment instability); 60-80°可疑異常; > 80° 提示DISI(dorsal intercalated segment instability)及舟月韌帶損傷",
+          "significance": "腕骨不穩定(carpal instability)評估之核心角度",
+          "source": "Radiology Assistant Carpal Instability; ScienceDirect Measurements of carpal bone angles"
+        },
+        {
+          "id": "carpal_height_ratio",
+          "name_zh": "腕骨高度比 (Carpal Height Ratio, Youm's Method)",
+          "calcType": "ratio",
+          "points": ["第三掌骨基部點", "橈骨遠端關節軟骨下骨點(定義腕骨高度)", "第三掌骨近端點", "第三掌骨遠端點(定義掌骨長度)"],
+          "howto": "PA片點選第三掌骨基部至橈骨遠端關節軟骨下骨兩點(腕骨高度),再點選第三掌骨全長兩點,計算比值",
+          "normal": "0.51-0.57",
+          "abnormal": "比值下降提示腕骨塌陷(如SLAC/SNAC wrist或類風濕性關節炎)",
+          "significance": "評估腕骨塌陷程度,類風濕性關節炎及慢性腕骨不穩定追蹤指標",
+          "source": "Radiologykey Carpal Morphometry and Function; Radiology Assistant Carpal Instability"
+        },
+        {
+          "id": "gilula_lines",
+          "name_zh": "Gilula氏弧線連續性 (Gilula's Lines)",
+          "calcType": "qualitative",
+          "howto": "PA片觀察近端腕骨列近側緣、近端腕骨列遠側緣、遠端腕骨列近側緣三條弧線是否平滑連續、間距一致",
+          "normal": "三條弧線連續平滑,弧線間距一致,無腕骨重疊",
+          "abnormal": "弧線中斷、階梯狀落差或腕骨重疊,提示韌帶損傷、骨折或脫位(如月骨周圍脫位)",
+          "significance": "快速篩檢腕骨排列異常及韌帶損傷",
+          "source": "Radiology Assistant Carpal Instability; PMC Perilunate Dislocation"
+        }
+      ]
     }
   ]
 }

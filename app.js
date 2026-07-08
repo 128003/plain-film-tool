@@ -6,11 +6,12 @@ const DATA = window.PLAIN_FILM_DATA;
 const $ = s => document.querySelector(s);
 
 /* 每種 calcType 所需點數 */
-const POINT_COUNT = { distance_mm:2, ratio:4, angle:4, angle3:3, angle_horizontal:2, angle_vertical:2, percent_slip:3, qualitative:0, qualitative_grade:0 };
+const POINT_COUNT = { distance_mm:2, ratio:4, angle:4, angle3:3, angle_horizontal:2, angle_vertical:2, percent_slip:3, qualitative:0, qualitative_grade:0, angle_perp:4, signed_distance_mm:2 };
 const TYPE_LABEL = {
   distance_mm:'距離 mm', ratio:'比值', angle:'兩線夾角', angle3:'三點夾角',
   angle_horizontal:'與水平夾角', angle_vertical:'與垂直夾角', percent_slip:'滑脫百分比',
-  qualitative:'目視判讀', qualitative_grade:'分級判讀'
+  qualitative:'目視判讀', qualitative_grade:'分級判讀',
+  angle_perp:'與垂線夾角', signed_distance_mm:'有號距離 mm'
 };
 
 /* ────────────────── 幾何計算 ────────────────── */
@@ -63,6 +64,22 @@ function compute(m, pts, mmPerPixel){
       const t = ((C.x-A.x)*AB.x + (C.y-A.y)*AB.y) / (AB.x*AB.x + AB.y*AB.y);
       const pct = t*100;
       return {value:pct, unit:'%', text:`${pct.toFixed(1)} %(${meyerdingGrade(Math.abs(pct))})`, calibrated:true};
+    }
+    case 'angle_perp': {
+      /* 兩線(軸線 vs 目標線)夾角,再取與「垂線」之偏角(90°-夾角) */
+      const t = angleBetween({x:pts[1].x-pts[0].x,y:pts[1].y-pts[0].y},{x:pts[3].x-pts[2].x,y:pts[3].y-pts[2].y});
+      const fold = Math.min(t, 180-t);
+      const a = Math.abs(90-fold);
+      return {value:a, unit:'°', text:`${a.toFixed(1)}°`, calibrated:true};
+    }
+    case 'signed_distance_mm': {
+      /* 假設標準擺位(前臂縱軸略垂直於影像),以 y 方向有號距離表示(正值/負值意義依項目而定) */
+      const pxSigned = pts[1].y - pts[0].y;
+      if(mmPerPixel){
+        const mm = pxSigned*mmPerPixel;
+        return {value:mm, unit:'mm', text:`${mm>=0?'+':''}${mm.toFixed(1)} mm`, calibrated:true};
+      }
+      return {value:pxSigned, unit:'px', text:`${pxSigned>=0?'+':''}${pxSigned.toFixed(1)} px(未校正)`, calibrated:false};
     }
   }
 }
@@ -129,9 +146,16 @@ const JUDGES = {
   meary_angle: v => v<=4 ? G('0°±4°,兩軸線接近共線,正常') : B('> 4°:凸向蹠側為扁平足、凸向背側為高弓足(方向請目視影像判斷)'),
   hva: v => v<20 ? G('< 20°,正常') : v<30 ? B('20-30°,輕度拇趾外翻') : v<40 ? B('30-40°,中度拇趾外翻') : B('> 40°,重度拇趾外翻'),
   ima: v => v<9 ? G('< 9°,正常') : B('≥ 9°,第一二蹠骨間角增大,常合併 HVA 評估手術方式'),
+  /* 腕關節 */
+  radial_inclination: v => (v>=13&&v<=30) ? G('13-30°,正常(平均約 22-23°)') : B('超出 13-30° 範圍,提示橈骨遠端骨折復位不良或畸形癒合'),
+  volar_tilt: v => (v>=0&&v<=22) ? G('0-22°,正常掌側傾(平均約 11-12°)') : B('超出 0-22° 範圍(背傾或角度過大),提示復位不良'),
+  ulnar_variance: v => Math.abs(v)<=2 ? G('0±2 mm,正常範圍') : v>2 ? B('正變異 > 2mm,增加尺腕關節撞擊症候群風險') : B('負變異 > 2mm,需注意 Kienböck’s disease 相關性'),
+  radial_height: v => (v>=8&&v<=18) ? G('8-18 mm,正常(平均約 11-12 mm)') : B('< 8 mm,提示橈骨短縮(骨折復位不良)'),
+  scapholunate_angle: v => (v>=30&&v<=60) ? G('30-60°,正常') : v<30 ? B('< 30°,提示 VISI(volar intercalated segment instability)') : v<=80 ? Y('60-80°,可疑異常,建議對照臨床與其他影像') : B('> 80°,提示 DISI(dorsal intercalated segment instability)及舟月韌帶損傷'),
+  carpal_height_ratio: v => (v>=0.51&&v<=0.57) ? G('0.51-0.57,正常(Youm’s method)') : B('< 0.51,提示腕骨塌陷(如 SLAC/SNAC wrist 或類風濕性關節炎)'),
 };
 function judge(m, res){
-  if(m.calcType==='distance_mm' && !res.calibrated){
+  if((m.calcType==='distance_mm'||m.calcType==='signed_distance_mm') && !res.calibrated){
     return I('未設定比例尺,僅顯示像素距離;如需 mm 判讀請先點「設定比例尺」校正');
   }
   const f = JUDGES[m.id];
@@ -346,8 +370,8 @@ function redraw(){
   if(S.active && S.pts.length){
     const t = S.active.calcType, P = S.pts;
     const c1 = COL.p1, c2 = COL.p2;
-    if(t==='distance_mm' && P.length>=2) drawLine(ctx,P[0],P[1],c1);
-    if((t==='ratio'||t==='angle')){
+    if((t==='distance_mm'||t==='signed_distance_mm') && P.length>=2) drawLine(ctx,P[0],P[1],c1);
+    if((t==='ratio'||t==='angle'||t==='angle_perp')){
       if(P.length>=2) drawLine(ctx,P[0],P[1],c1);
       if(P.length>=4) drawLine(ctx,P[2],P[3],c2);
     }
