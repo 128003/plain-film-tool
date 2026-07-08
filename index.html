@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plain Film 判讀量測工具</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" id="homeLink" class="brand">🩻 Plain Film 判讀量測工具</a>
+    <nav><a class="navlink" href="https://128003.github.io/rehab-toolkit/">← 回復健科臨床工具箱</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ══════════ 首頁:部位總覽 ══════════ -->
+  <section id="homeView">
+    <div class="hero">
+      <h1>X 光片判讀量測輔助工具</h1>
+      <p>上傳影像 → 點選標記點 → 自動計算角度 / 距離 / 比值,並依文獻正常值即時判讀。<br>
+      涵蓋 8 個部位、41 項量測。所有計算皆在瀏覽器本機完成,影像不會上傳到任何伺服器。</p>
+    </div>
+    <div class="region-grid" id="regionGrid"></div>
+
+    <div class="panel refs-panel">
+      <details>
+        <summary class="panel-title">📚 參考文獻總覽(依部位)</summary>
+        <div class="refs-body" id="refsBody"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ══════════ 部位頁 ══════════ -->
+  <section id="regionView" hidden>
+    <a class="back" id="backHome" href="#">← 返回部位總覽</a>
+    <div class="region-head">
+      <h1 id="regionTitle"></h1>
+      <div class="views-pill" id="regionViews"></div>
+    </div>
+
+    <div class="workspace">
+      <!-- 左:影像工作區 -->
+      <div class="panel canvas-panel">
+        <div class="panel-title">🖼 影像工作區</div>
+        <div id="uploadZone" class="upload-zone">
+          <div class="upload-icon">⬆︎</div>
+          <div>拖曳影像到此處,或點擊選擇檔案</div>
+          <div class="upload-sub">支援 JPG / PNG(DICOM 請先截圖轉檔)</div>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" hidden>
+
+        <div id="canvasArea" hidden>
+          <div class="canvas-toolbar">
+            <button class="btn btn-ghost" id="btnCalib">📏 設定比例尺</button>
+            <span class="calib-status" id="calibStatus">未校正(距離將以像素顯示)</span>
+            <button class="btn btn-ghost" id="btnChangeImg">🔄 更換影像</button>
+          </div>
+          <div id="calibHint" class="mark-bar" hidden>
+            <span id="calibHintText">請在影像上點選「已知實際距離」的兩個端點(例如尺標兩端)</span>
+            <button class="btn btn-ghost btn-sm" id="btnCalibCancel">✕ 取消校正</button>
+          </div>
+          <div id="calibForm" class="calib-form" hidden>
+            <label>兩點實際距離:<input type="number" id="calibMM" min="0.1" step="0.1" placeholder="mm"> mm</label>
+            <button class="btn btn-primary btn-sm" id="btnCalibOK">確定</button>
+            <button class="btn btn-ghost btn-sm" id="btnCalibRedo">重新點選</button>
+          </div>
+
+          <div id="markBar" class="mark-bar" hidden>
+            <span class="mark-prompt" id="markPrompt"></span>
+            <span class="mark-btns">
+              <button class="btn btn-ghost btn-sm" id="btnUndo">↩ 上一步</button>
+              <button class="btn btn-ghost btn-sm" id="btnClearPts">🗑 清除重來</button>
+              <button class="btn btn-ghost btn-sm" id="btnCancelMark">✕ 結束量測</button>
+            </span>
+          </div>
+
+          <div class="canvas-wrap"><canvas id="cv"></canvas></div>
+          <div id="resultBox" class="result-box" hidden></div>
+        </div>
+        <div id="noImgNote" class="no-img-note" hidden></div>
+      </div>
+
+      <!-- 右:量測項目 -->
+      <div class="panel measure-panel">
+        <div class="panel-title">📋 量測項目 Checklist <span class="count-tag" id="measureCount"></span></div>
+        <div id="measureList"></div>
+      </div>
+    </div>
+
+    <!-- 結果彙整 -->
+    <div class="panel results-panel">
+      <div class="panel-title-row">
+        <div class="panel-title">🗂 本部位量測結果彙整</div>
+        <button class="btn btn-ghost btn-sm" id="btnClearResults">清空本部位結果</button>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>量測項目</th><th>數值 / 選擇</th><th>判讀</th><th>時間</th><th></th></tr></thead>
+          <tbody id="resultRows"></tbody>
+        </table>
+      </div>
+      <div class="empty-note" id="resultsEmpty">尚無量測結果 — 完成量測或勾選判讀後會自動列於此處。</div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  ⚠️ 本工具僅供教學與判讀輔助參考,不取代專科醫師之最終診斷。<br>
+  所有影像與量測僅在使用者本機瀏覽器處理,不上傳任何伺服器。
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

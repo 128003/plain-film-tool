@@ -1,0 +1,510 @@
+{
+  "regions": [
+    {
+      "id": "cspine",
+      "name_zh": "頸椎 Cervical Spine",
+      "views": "Lateral (側位) 為主, 部分需 Open-mouth odontoid view",
+      "measurements": [
+        {
+          "id": "adi",
+          "name_zh": "寰齒間距 (Atlantodental Interval, ADI)",
+          "calcType": "distance_mm",
+          "points": ["C1前弓後緣下點", "齒突(dens)前緣對應點"],
+          "howto": "側位片上,測量C1前弓後緣與齒突前緣之最短距離",
+          "normal": "成人 < 3 mm; 兒童 < 4-5 mm",
+          "abnormal": "成人 ≥ 3 mm、兒童 ≥ 5 mm 提示寰樞椎不穩定(橫韌帶斷裂)",
+          "significance": "評估寰樞椎(C1-C2)韌帶完整性,常見於外傷、類風濕性關節炎",
+          "source": "Radiopaedia; Medscape Atlantoaxial Instability"
+        },
+        {
+          "id": "pvst",
+          "name_zh": "咽後(椎前)軟組織厚度 (Prevertebral Soft Tissue, PVST)",
+          "calcType": "distance_mm",
+          "points": ["椎體前緣(C2或C6)", "氣道/軟組織前緣對應點"],
+          "howto": "側位片測量C2及C6椎體前緣至咽後軟組織前緣之垂直距離(建議分別量測後取較大者判讀)",
+          "normal": "C2-C4 前方 < 7 mm; C5-C7(C6) 前方 < 21-22 mm",
+          "abnormal": "超過正常值提示血腫或水腫,間接反映骨折或韌帶損傷",
+          "significance": "外傷時篩檢頸椎骨折/韌帶損傷之間接徵象",
+          "source": "Radiopaedia; ScienceDirect prevertebral soft tissue studies"
+        },
+        {
+          "id": "powers_ratio",
+          "name_zh": "Power's Ratio (寰枕關節脫位篩檢)",
+          "calcType": "ratio",
+          "points": ["Basion (B)", "C1後弓前緣中點 (C)", "Opisthion (O)", "C1前弓後緣中點 (A)"],
+          "howto": "依序點選 B→C(第一段距離) 再 O→A(第二段距離),計算 BC / OA 之比值",
+          "normal": "0.7 - 1.0 (X光); < 0.9 (CT)",
+          "abnormal": "> 1.0 提示前方寰枕脫位; 比值過低提示後方脫位",
+          "significance": "篩檢寰枕關節脫位(atlanto-occipital dislocation),嚴重外傷徵象",
+          "source": "Radiopaedia Powers Ratio; Orthobullets"
+        },
+        {
+          "id": "cobb_c2c7",
+          "name_zh": "頸椎前凸角度 (Cervical Lordosis, Cobb C2-C7)",
+          "calcType": "angle",
+          "points": ["C2椎體下終板前點", "C2椎體下終板後點", "C7椎體下終板前點", "C7椎體下終板後點"],
+          "howto": "點選C2下終板兩點(第一線),再點選C7下終板兩點(第二線),計算兩線夾角(Cobb method)",
+          "normal": "約 20-40° 前凸(lordosis); 個體差異大",
+          "abnormal": "< 10° 或呈後凸(kyphosis)提示曲度異常,可能與肌肉痙攣、退化或術後有關",
+          "significance": "評估頸椎整體矢狀面排列",
+          "source": "JTSS Cervical Spinal Alignment Parameters; PMC studies"
+        },
+        {
+          "id": "torg_ratio",
+          "name_zh": "Torg-Pavlov Ratio (頸椎椎管狹窄比值)",
+          "calcType": "ratio",
+          "points": ["椎管前緣", "椎管後緣(棘突板連線)", "椎體前緣", "椎體後緣"],
+          "howto": "點選椎管前後徑兩點,再點選同節椎體前後徑兩點,計算椎管/椎體比值",
+          "normal": "約 1.0",
+          "abnormal": "< 0.8 提示椎管相對狹窄(此比值爭議性較大,現多作為歷史性參考)",
+          "significance": "評估發展性頸椎椎管狹窄風險(如運動員)",
+          "source": "Radiopaedia; PMC Reevaluation of Pavlov Ratio"
+        },
+        {
+          "id": "spinolaminar",
+          "name_zh": "棘突板線 (Spinolaminar Line) 連續性",
+          "calcType": "qualitative",
+          "howto": "觀察棘突基底連線是否呈平滑弧線,有無階梯狀中斷或後突",
+          "normal": "平滑連續弧線",
+          "abnormal": "中斷、階梯狀位移提示骨折或脫位、韌帶損傷",
+          "significance": "評估後柱結構完整性及椎體排列",
+          "source": "Radiologymasterclass; ResearchGate"
+        }
+      ]
+    },
+    {
+      "id": "lspine",
+      "name_zh": "腰椎 Lumbar Spine",
+      "views": "Lateral (側位) / AP 為主, 站立位評估脊椎排列",
+      "measurements": [
+        {
+          "id": "lumbar_lordosis",
+          "name_zh": "腰椎前凸角度 (Lumbar Lordosis, Cobb T12/L1-S1)",
+          "calcType": "angle",
+          "points": ["T12(或L1)上終板前點", "T12(或L1)上終板後點", "S1上終板前點", "S1上終板後點"],
+          "howto": "點選T12或L1上終板兩點(第一線),再點選S1上終板兩點(第二線),計算兩線夾角",
+          "normal": "平均約 33° ± 12°(隨年齡增加而增加); 應與骨盆入射角(PI)相差在 ±9-10° 內",
+          "abnormal": "顯著小於或大於此範圍,或與PI差距過大,提示脊椎骨盆排列失衡",
+          "significance": "評估腰椎矢狀面排列及脊椎骨盆平衡",
+          "source": "Radiology (RSNA) Pelvic Evaluation; Scientific Reports 2020"
+        },
+        {
+          "id": "meyerding",
+          "name_zh": "脊椎滑脫分級 (Meyerding Grading)",
+          "calcType": "percent_slip",
+          "points": ["下位椎體後上緣(基準線起點)", "下位椎體前上緣(基準線終點,定義100%寬度)", "上位(滑脫)椎體後下緣"],
+          "howto": "先點選下位椎體上緣前後兩端(定義椎體寬度為100%基準線),再點選滑脫椎體後下緣,系統將自動投影計算滑脫百分比",
+          "normal": "0%(無滑脫)",
+          "abnormal": "Grade I: 0-25%; Grade II: 25-50%; Grade III: 50-75%; Grade IV: 75-100%; Grade V(脊椎脫落): >100%",
+          "significance": "評估脊椎滑脫程度,分級I-II為低度滑脫,III-V為高度滑脫",
+          "source": "PMC Meyerding Classification in Brief; StatPearls Spondylolisthesis"
+        },
+        {
+          "id": "disc_height_index",
+          "name_zh": "椎間盤高度指數 (Disc Height Index)",
+          "calcType": "ratio",
+          "points": ["椎間盤前緣上點", "椎間盤前緣下點(定義盤高)", "相鄰椎體前緣上點", "相鄰椎體前緣下點(定義椎體高)"],
+          "howto": "點選椎間盤前緣上下兩點,再點選相鄰椎體前緣上下兩點,計算盤高/椎體高之比值",
+          "normal": "各節段間相對一致,無明顯塌陷",
+          "abnormal": "比值明顯下降提示椎間盤退化性塌陷",
+          "significance": "評估椎間盤退化程度",
+          "source": "PMC lumbar fusion disc height studies"
+        },
+        {
+          "id": "ferguson_angle",
+          "name_zh": "腰薦角 (Lumbosacral/Ferguson Angle)",
+          "calcType": "angle_horizontal",
+          "points": ["S1上終板前點", "S1上終板後點"],
+          "howto": "點選S1上終板前後兩點,系統計算此線與水平線之夾角",
+          "normal": "約 30-50°(平均約 41°)",
+          "abnormal": "> 47° 增加腰薦關節剪力,與下背痛機轉相關",
+          "significance": "評估腰薦交界處生物力學負荷",
+          "source": "AJR Measurement of Normal Lumbosacral Angle; PMC Nigeria study"
+        },
+        {
+          "id": "scoliosis_cobb",
+          "name_zh": "脊椎側彎角度 (Scoliosis Cobb Angle)",
+          "calcType": "angle",
+          "points": ["最傾斜上端椎上終板前點", "上終板後點", "最傾斜下端椎下終板前點", "下終板後點"],
+          "howto": "選取傾斜角度最大之上端椎與下端椎,分別點選其終板兩點,計算兩線夾角",
+          "normal": "< 10°(非診斷性彎曲)",
+          "abnormal": "≥ 10° 定義為脊椎側彎(scoliosis);≥25-40°可能需考慮手術評估(依年齡/骨骼成熟度)",
+          "significance": "脊椎側彎診斷與追蹤之標準測量",
+          "source": "Scoliosis Research Society standard; PMC Cobb angle reliability"
+        }
+      ]
+    },
+    {
+      "id": "sacrum",
+      "name_zh": "薦椎/骨盆 Sacrum & Pelvic Ring",
+      "views": "AP Pelvis, Inlet/Outlet view(創傷)",
+      "measurements": [
+        {
+          "id": "pubic_symphysis",
+          "name_zh": "恥骨聯合寬度 (Pubic Symphysis Width)",
+          "calcType": "distance_mm",
+          "points": ["恥骨聯合左側緣", "恥骨聯合右側緣"],
+          "howto": "AP骨盆片測量恥骨聯合間隙寬度",
+          "normal": "成人 < 5 mm(約 4.8 ± 2.5 mm)",
+          "abnormal": "> 5 mm 提示恥骨聯合分離; > 25 mm(2.5 cm)為嚴重分離,提示骨盆環不穩定",
+          "significance": "評估骨盆環前環穩定性(如開書型骨折)",
+          "source": "PMC Width of pubic symphysis; RadioGraphics Pelvic Ring Injuries"
+        },
+        {
+          "id": "si_joint_width",
+          "name_zh": "薦髂關節寬度/對稱性 (SI Joint Width)",
+          "calcType": "distance_mm",
+          "points": ["薦髂關節前緣一點", "對應關節面另一點"],
+          "howto": "測量薦髂關節間隙寬度,並與對側比較是否對稱",
+          "normal": "雙側對稱,關節間隙約 2-4 mm",
+          "abnormal": "單側或雙側增寬、不對稱提示骨盆環後環損傷不穩定",
+          "significance": "骨盆環後環穩定性評估(創傷)",
+          "source": "RadioGraphics High-Energy Pelvic Ring Injuries"
+        },
+        {
+          "id": "sacral_slope",
+          "name_zh": "薦椎傾斜角 (Sacral Slope)",
+          "calcType": "angle_horizontal",
+          "points": ["S1上終板前點", "S1上終板後點"],
+          "howto": "點選S1上終板前後兩點,系統計算此線與水平線之夾角(需與PI、PT合併判讀)",
+          "normal": "因人而異,需與骨盆入射角(PI)、骨盆傾斜角(PT)合併判讀:PI = PT + SS",
+          "abnormal": "與PI/PT組合異常提示脊椎骨盆代償性失衡",
+          "significance": "脊椎骨盆矢狀面平衡評估",
+          "source": "ScienceDirect Sacral Slope Overview"
+        },
+        {
+          "id": "arcuate_line",
+          "name_zh": "薦椎弓狀線完整性 (Arcuate Line Integrity)",
+          "calcType": "qualitative",
+          "howto": "逐一檢視薦椎孔弓狀線(arcuate lines)是否連續、對稱",
+          "normal": "弓狀線連續、雙側對稱",
+          "abnormal": "線條中斷、模糊或不對稱提示薦椎骨折(容易被忽略)",
+          "significance": "薦椎骨折篩檢,常規骨盆X光必檢項目",
+          "source": "Radiologymasterclass Sacrum and Pelvis"
+        }
+      ]
+    },
+    {
+      "id": "shoulder",
+      "name_zh": "肩關節 Shoulder",
+      "views": "AP (Grashey/true AP), 部分需 axillary/scapular Y view",
+      "measurements": [
+        {
+          "id": "ahd",
+          "name_zh": "肩峰肱骨頭間距 (Acromiohumeral Distance, AHD)",
+          "calcType": "distance_mm",
+          "points": ["肩峰下緣最低點", "肱骨頭上緣對應點"],
+          "howto": "AP片測量肩峰下緣至肱骨頭上緣最短距離",
+          "normal": "7-14 mm",
+          "abnormal": "< 7 mm 提示旋轉肌袖(rotator cuff)大範圍撕裂或病變",
+          "significance": "評估旋轉肌袖功能完整性",
+          "source": "PMC Critical Shoulder Angle studies"
+        },
+        {
+          "id": "cc_distance",
+          "name_zh": "喙鎖間距 (Coracoclavicular Distance, CC)",
+          "calcType": "distance_mm",
+          "points": ["鎖骨下緣對應點", "喙突上緣對應點"],
+          "howto": "測量鎖骨下緣至喙突上緣之垂直距離,可與對側比較",
+          "normal": "11-13 mm",
+          "abnormal": "Rockwood III: 較對側增加但 <25mm(或增加>5mm); Rockwood V: >25mm(超過正常2倍以上)",
+          "significance": "肩鎖關節脫位(AC separation)分級之核心測量",
+          "source": "Radiopaedia AC joint injuries; londonarmdoc Rockwood classification"
+        },
+        {
+          "id": "ac_joint_space",
+          "name_zh": "肩鎖關節間隙 (AC Joint Space)",
+          "calcType": "distance_mm",
+          "points": ["鎖骨遠端關節面", "肩峰對應關節面"],
+          "howto": "AP片測量肩鎖關節間隙寬度",
+          "normal": "約 1-3 mm(隨年齡可略增寬,需雙側比較)",
+          "abnormal": "明顯增寬或消失提示脫位/退化性關節炎",
+          "significance": "肩鎖關節脫位/退化評估",
+          "source": "Radiologykey Acromioclavicular Joint"
+        },
+        {
+          "id": "csa",
+          "name_zh": "臨界肩峰角 (Critical Shoulder Angle, CSA)",
+          "calcType": "angle3",
+          "vertexIndex": 0,
+          "points": ["盂唇上緣(頂點)", "盂唇下緣", "肩峰最外下緣點"],
+          "howto": "點選盂唇上緣為頂點,再依序點選盂唇下緣、肩峰最外下緣,系統計算頂點夾角(需Grashey true AP view)",
+          "normal": "約 30-35°(平均約33°)",
+          "abnormal": "< 30° 增加盂肱關節退化性關節炎風險; > 35° 增加旋轉肌袖退化性撕裂風險",
+          "significance": "整合肩峰覆蓋與盂窩傾斜角度,預測肌腱病變/關節炎風險",
+          "source": "PMC Critical Shoulder Angle and Clinical Correlation"
+        },
+        {
+          "id": "gh_joint_space",
+          "name_zh": "盂肱關節間隙 (Glenohumeral Joint Space)",
+          "calcType": "distance_mm",
+          "points": ["肱骨頭內側緣", "關節盂內側緣"],
+          "howto": "Grashey view測量肱骨頭與關節盂間隙",
+          "normal": "約 4-6 mm,雙側對稱",
+          "abnormal": "狹窄或消失提示退化性關節炎",
+          "significance": "盂肱關節退化性關節炎評估",
+          "source": "Radiologykey Shoulder imaging"
+        }
+      ]
+    },
+    {
+      "id": "hip",
+      "name_zh": "髖關節 Hip",
+      "views": "AP Pelvis(骨盆正位), Frog-leg lateral",
+      "measurements": [
+        {
+          "id": "lcea",
+          "name_zh": "外側中心緣角 (Lateral Center-Edge Angle, LCEA, Wiberg)",
+          "calcType": "angle_vertical",
+          "points": ["股骨頭中心(頂點)", "髖臼外側緣"],
+          "howto": "點選股骨頭中心為頂點,再點選髖臼外側緣,系統計算此線與垂直線之夾角",
+          "normal": "> 25° 正常; 20-25° 邊緣性(borderline); < 20° 髖臼發育不良(dysplasia)",
+          "abnormal": "< 20° 提示髖臼發育不良,股骨頭覆蓋不足",
+          "significance": "評估髖臼對股骨頭外側覆蓋程度,DDH篩檢核心指標",
+          "source": "PMC Radiographic Parameters of Adult Hip Dysplasia"
+        },
+        {
+          "id": "acetabular_index",
+          "name_zh": "髖臼指數 (Acetabular Index, 小兒)",
+          "calcType": "angle_horizontal",
+          "points": ["Y-軟骨(髖臼內側轉折)點", "髖臼外側緣"],
+          "howto": "點選髖臼頂線內、外兩點,系統計算此線與水平(Hilgenreiner線)之夾角",
+          "normal": "新生兒 < 30°; 2歲後 < 25°",
+          "abnormal": "超過相對年齡正常值提示發展性髖關節發育不良(DDH)",
+          "significance": "小兒DDH篩檢與追蹤之標準測量",
+          "source": "EPOS Adult Hip Radiography Lines and Angles"
+        },
+        {
+          "id": "tonnis_angle",
+          "name_zh": "Tönnis角 (髖臼傾斜角, 成人)",
+          "calcType": "angle_horizontal",
+          "points": ["髖臼內側緣(sourcil線內端)", "髖臼外側緣(sourcil線外端)"],
+          "howto": "點選髖臼負重區(sourcil)內、外兩點,系統計算此線與水平線之夾角",
+          "normal": "0-10°",
+          "abnormal": "> 10° 提示髖臼發育不良; 接近0°或負值提示髖臼過度覆蓋(pincer type FAI)",
+          "significance": "成人髖臼傾斜角評估,補充LCEA之髖臼形態資訊",
+          "source": "ScienceDirect FAI Plain Radiography"
+        },
+        {
+          "id": "shenton_line",
+          "name_zh": "Shenton氏線連續性",
+          "calcType": "qualitative",
+          "howto": "觀察閉孔上緣弧線延伸至股骨頸內下緣是否形成平滑連續弧線",
+          "normal": "平滑連續弧線",
+          "abnormal": "線條中斷提示髖關節脫位、股骨頸骨折或嚴重髖臼發育不良",
+          "significance": "快速篩檢髖關節脫位/半脫位之經典徵象",
+          "source": "Radiologykey Adult Hip Radiography"
+        },
+        {
+          "id": "neck_shaft_angle",
+          "name_zh": "股骨頸幹角 (Neck-Shaft Angle)",
+          "calcType": "angle3",
+          "vertexIndex": 0,
+          "points": ["股骨頸軸線遠端點(頂點)", "股骨頭中心", "股骨幹軸線遠端點"],
+          "howto": "點選股骨頸與股骨幹交界處為頂點,再依序點選股骨頭中心、股骨幹遠端一點,系統計算頂點夾角",
+          "normal": "約 120-135°(平均約127°)",
+          "abnormal": "> 135° 為髖外翻(coxa valga); < 120° 為髖內翻(coxa vara)",
+          "significance": "評估股骨近端力學排列,與髖關節發育、股骨頸應力相關",
+          "source": "EPOS Adult Hip Radiography Lines and Angles"
+        },
+        {
+          "id": "klein_line",
+          "name_zh": "Klein氏線 (SCFE篩檢)",
+          "calcType": "qualitative",
+          "howto": "沿股骨頸上緣畫延伸線,觀察是否切過部分股骨頭骨骺",
+          "normal": "延伸線切過股骨頭骨骺外側部分",
+          "abnormal": "延伸線未切過股骨頭骨骺(骨骺完全在線下方)提示股骨頭骨骺滑脫(SCFE)",
+          "significance": "青少年SCFE篩檢之經典床邊測量",
+          "source": "Wikipedia Klein's line; Radsource SCFE"
+        }
+      ]
+    },
+    {
+      "id": "knee",
+      "name_zh": "膝關節 Knee",
+      "views": "AP weight-bearing, Lateral 30° flexion, Skyline(髕骨軸位)",
+      "measurements": [
+        {
+          "id": "insall_salvati",
+          "name_zh": "Insall-Salvati比值 (髕骨高度)",
+          "calcType": "ratio",
+          "points": ["髕骨下緣", "脛骨粗隆(定義髕腱長)", "髕骨上緣", "髕骨下緣(定義髕骨長)"],
+          "howto": "側位片(屈膝30°)先點選髕骨下緣→脛骨粗隆(髕腱長),再點選髕骨上緣→下緣(髕骨長),計算比值",
+          "normal": "0.8 - 1.2",
+          "abnormal": "> 1.2 高位髕骨(patella alta); < 0.8 低位髕骨(patella baja)",
+          "significance": "評估髕骨不穩定、股四頭肌肌腱病變風險",
+          "source": "Physiopedia Insall-Salvati Ratio"
+        },
+        {
+          "id": "tibial_slope",
+          "name_zh": "脛骨平台後傾角 (Posterior Tibial Slope)",
+          "calcType": "angle",
+          "points": ["脛骨幹軸線點1", "脛骨幹軸線點2", "脛骨平台線點1", "脛骨平台線點2"],
+          "howto": "點選脛骨幹縱軸兩點,再點選脛骨平台切線兩點,計算兩線夾角(取垂直線後之夾角)",
+          "normal": "約 7-10°",
+          "abnormal": "過大或過小可能影響前十字韌帶負荷及術後穩定性",
+          "significance": "膝關節手術規劃(如ACL重建、TKA)重要參數",
+          "source": "Boneandspine Normal Knee X-ray"
+        },
+        {
+          "id": "tibiofemoral_angle",
+          "name_zh": "脛股角 (Tibiofemoral Angle, 力學軸)",
+          "calcType": "angle",
+          "points": ["股骨幹軸線點1", "股骨幹軸線點2", "脛骨幹軸線點1", "脛骨幹軸線點2"],
+          "howto": "AP負重片點選股骨解剖軸兩點,再點選脛骨解剖軸兩點,計算兩軸夾角(即外翻偏移角)",
+          "normal": "解剖軸約 5-7° 外翻(valgus)",
+          "abnormal": "內翻(varus)或外翻角度顯著增加,提示力學排列異常,與退化性關節炎分佈相關",
+          "significance": "評估下肢力學排列,退化性關節炎風險評估",
+          "source": "Boneandspine Normal Knee X-ray"
+        },
+        {
+          "id": "kl_grade",
+          "name_zh": "Kellgren-Lawrence分級 (膝關節退化性關節炎)",
+          "calcType": "qualitative_grade",
+          "howto": "綜合評估關節間隙狹窄、骨刺、硬化、變形程度,分為Grade 0-4",
+          "normal": "Grade 0:正常",
+          "abnormal": "Grade 1:可疑狹窄+可能骨刺; Grade 2:明確骨刺+輕度狹窄; Grade 3:中度多發骨刺+明確狹窄+可能硬化; Grade 4:嚴重狹窄+大型骨刺+明顯硬化變形",
+          "significance": "膝關節退化性關節炎嚴重度標準分級",
+          "source": "PMC Classifications in Brief Kellgren-Lawrence"
+        },
+        {
+          "id": "knee_joint_space",
+          "name_zh": "膝關節間隙寬度 (Joint Space Width)",
+          "calcType": "distance_mm",
+          "points": ["股骨內(外)髁最低點", "脛骨平台對應點"],
+          "howto": "AP負重片測量內側或外側脛股關節間隙最窄處",
+          "normal": "內側約 4-5 mm 以上,雙側對稱",
+          "abnormal": "狹窄或與對側差異明顯提示軟骨磨損/退化性關節炎",
+          "significance": "退化性關節炎嚴重度量化及追蹤",
+          "source": "PMC Joint Space Narrowing Kellgren-Lawrence Progression"
+        }
+      ]
+    },
+    {
+      "id": "ankle",
+      "name_zh": "踝關節 Ankle",
+      "views": "Mortise view(踝穴位,內旋15-20°), AP, Lateral",
+      "measurements": [
+        {
+          "id": "mcs",
+          "name_zh": "內側關節間隙 (Medial Clear Space, MCS)",
+          "calcType": "distance_mm",
+          "points": ["內踝關節面外側點", "距骨內側緣對應點"],
+          "howto": "Mortise view測量內踝與距骨間之間隙",
+          "normal": "≤ 4 mm,且應與上方脛距關節間隙相近",
+          "abnormal": "> 4 mm 或較對側增加 2-3 mm,提示三角韌帶斷裂/踝關節不穩定",
+          "significance": "評估內側韌帶複合體及距骨穩定性",
+          "source": "Radiography101; Sportsmedreview Ankle Radiographs"
+        },
+        {
+          "id": "tfcs",
+          "name_zh": "脛腓骨間隙 (Tibiofibular Clear Space, TFCS)",
+          "calcType": "distance_mm",
+          "points": ["腓骨內側緣", "脛骨切迹外側緣"],
+          "howto": "Mortise view測量脛骨切迹與腓骨內側壁之間隙(關節面上方1cm處測量)",
+          "normal": "< 6 mm",
+          "abnormal": "≥ 6 mm 提示脛腓骨聯合韌帶(syndesmosis)損傷",
+          "significance": "踝關節聯合韌帶損傷評估",
+          "source": "Wheelessonline Mortise views; PMC ankle mortise cadaveric study"
+        },
+        {
+          "id": "talocrural_angle",
+          "name_zh": "距骨小腿角 (Talocrural Angle)",
+          "calcType": "angle",
+          "points": ["內外踝連線點1", "內外踝連線點2", "脛骨遠端關節面垂直線點1", "脛骨遠端關節面垂直線點2"],
+          "howto": "Mortise view點選內外踝連線兩點,再點選脛骨遠端關節面垂線兩點,計算夾角,並與健側比較",
+          "normal": "約 83°(範圍 75-87°)",
+          "abnormal": "與對側相差數度以上,提示腓骨短縮或旋轉異常(如骨折癒合不良)",
+          "significance": "評估腓骨長度及踝穴解剖對位",
+          "source": "Aliem EMRad Traumatic Ankle"
+        },
+        {
+          "id": "talar_tilt",
+          "name_zh": "距骨傾斜角 (Talar Tilt)",
+          "calcType": "angle",
+          "points": ["脛骨遠端關節面點1", "脛骨遠端關節面點2", "距骨頂關節面點1", "距骨頂關節面點2"],
+          "howto": "Mortise view點選脛骨遠端關節面兩點,再點選距骨頂關節面兩點,計算夾角(內外側間隙不對稱程度)",
+          "normal": "雙側對稱,間隙差異 < 2 mm,傾斜角度差 < 5°",
+          "abnormal": "內側間隙增寬(talar tilt)提示三角韌帶或外側韌帶複合體斷裂",
+          "significance": "踝關節韌帶穩定性評估(常需壓力攝影)",
+          "source": "PMC reliability radiographic measurements talus position"
+        }
+      ]
+    },
+    {
+      "id": "foot",
+      "name_zh": "足部 Foot",
+      "views": "Lateral weight-bearing(側位負重), AP/Oblique, Axial calcaneal view",
+      "measurements": [
+        {
+          "id": "bohler_angle",
+          "name_zh": "Böhler氏角 (跟骨結節關節角)",
+          "calcType": "angle3",
+          "vertexIndex": 1,
+          "points": ["跟骨前突最高點", "後關節面最高點(頂點)", "跟骨結節最高點"],
+          "howto": "側位片點選前突最高點,再點選後關節面最高點為頂點,最後點選跟骨結節最高點,系統計算頂點夾角",
+          "normal": "25-40°",
+          "abnormal": "< 20° 提示跟骨骨折伴後關節面塌陷",
+          "significance": "跟骨骨折嚴重度評估經典指標",
+          "source": "LITFL Böhler angle; JFASAP Bohler's Angle and Critical Angle of Gissane"
+        },
+        {
+          "id": "gissane_angle",
+          "name_zh": "Gissane氏臨界角 (Critical Angle of Gissane)",
+          "calcType": "angle3",
+          "vertexIndex": 1,
+          "points": ["前中關節面外緣點", "跟骨外側壁轉折點(頂點)", "後關節面外緣點"],
+          "howto": "側位片點選前中關節面外緣,再點選跟骨外側壁轉折處為頂點,最後點選後關節面外緣,系統計算頂點夾角",
+          "normal": "120-145°",
+          "abnormal": "角度增大提示距骨向跟骨後關節面塌陷(跟骨骨折)",
+          "significance": "跟骨骨折評估,與Böhler角合併判讀",
+          "source": "JFASAP Bohler's Angle and Critical Angle of Gissane"
+        },
+        {
+          "id": "calcaneal_pitch",
+          "name_zh": "跟骨傾斜角 (Calcaneal Pitch Angle)",
+          "calcType": "angle_horizontal",
+          "points": ["跟骨下緣後點", "跟骨下緣前點"],
+          "howto": "側位負重片點選跟骨下緣前後兩點,系統計算此線與水平面之夾角",
+          "normal": "約 17° ± 6°(範圍約10-23°)",
+          "abnormal": "降低提示扁平足(pes planus); 增高提示高弓足(pes cavus)",
+          "significance": "足弓高度評估參數之一",
+          "source": "EPOS Quantitative Radiographic Analysis Foot Alignment"
+        },
+        {
+          "id": "meary_angle",
+          "name_zh": "Meary氏角 (距骨-第一蹠骨角)",
+          "calcType": "angle",
+          "points": ["距骨頸軸線點1", "距骨頸軸線點2", "第一蹠骨軸線點1", "第一蹠骨軸線點2"],
+          "howto": "側位負重片點選距骨長軸兩點,再點選第一蹠骨長軸兩點,計算夾角(兩軸線理論上應共線)",
+          "normal": "0° ± 4°(兩軸線應共線)",
+          "abnormal": "頂點朝蹠側(convex down)> 4° 提示扁平足(pes planus); 頂點朝背側 > 4° 提示高弓足(pes cavus)",
+          "significance": "足弓塌陷/高弓足診斷及分度之核心角度",
+          "source": "PMC The Méary Angle Historical Perspective; Radiopaedia Meary angle"
+        },
+        {
+          "id": "hva",
+          "name_zh": "拇趾外翻角 (Hallux Valgus Angle, HVA)",
+          "calcType": "angle",
+          "points": ["第一蹠骨軸線點1", "第一蹠骨軸線點2", "近端趾骨軸線點1", "近端趾骨軸線點2"],
+          "howto": "負重AP片點選第一蹠骨軸線兩點,再點選拇趾近端趾骨軸線兩點,計算夾角",
+          "normal": "< 20°",
+          "abnormal": "20-30° 輕度; 30-40° 中度; > 40° 重度拇趾外翻",
+          "significance": "拇趾外翻嚴重度分級,手術決策參考",
+          "source": "Radiopaedia Hallux valgus intermetatarsal angle case"
+        },
+        {
+          "id": "ima",
+          "name_zh": "第一二蹠骨間角 (Intermetatarsal Angle, IMA)",
+          "calcType": "angle",
+          "points": ["第一蹠骨軸線點1", "第一蹠骨軸線點2", "第二蹠骨軸線點1", "第二蹠骨軸線點2"],
+          "howto": "負重AP片點選第一蹠骨軸線兩點,再點選第二蹠骨軸線兩點,計算夾角",
+          "normal": "< 9°",
+          "abnormal": "角度越大,拇趾外翻畸形越嚴重,常合併HVA評估手術方式",
+          "significance": "拇趾外翻分級及手術規劃(如截骨術式選擇)",
+          "source": "Radiopaedia Hallux valgus intermetatarsal angle case"
+        }
+      ]
+    }
+  ]
+}
